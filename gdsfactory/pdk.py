@@ -179,10 +179,10 @@ class Pdk(BaseModel):
         logger.debug(f"{self.name!r} PDK is now active")
 
         for pdk in self.base_pdks:
-            cross_sections = pdk.cross_sections
+            cross_sections = pdk.cross_sections.copy()
             cross_sections.update(self.cross_sections)
             cells = pdk.cells
-            self.cross_sections = cross_sections
+            self.cross_sections = cross_sections.copy()
             cells.update(self.cells)
             self.cells.update(cells)
 
